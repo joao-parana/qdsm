@@ -5,11 +5,17 @@ class MediaPlayer:
 
     def __init__(self):
         self.machine = Machine(model = self, states = MediaPlayer.states, initial = 'stopped')
-        self.machine.add_transition('play', 'stopped', 'playing')
-        self.machine.add_transition('play', 'paused', 'playing')
+        self.machine.add_transition('play', 'stopped', 'playing', before='side_efect_before')
+        self.machine.add_transition('play', 'paused', 'playing', after='side_efect_after')
         self.machine.add_transition('pause', 'playing', 'paused')
         self.machine.add_transition('stop', '*', 'stopped')
 
+    def side_efect_before(self):
+        print('side efect before')
+
+    def side_efect_after(self):
+        print('side efect after')
+        
 if __name__ == '__main__':
     # Cria um objeto MediaPlayer
     player = MediaPlayer()
