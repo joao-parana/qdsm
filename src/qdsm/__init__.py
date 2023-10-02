@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-from qdsm import MediaPlayer
+from .qdsm import MediaPlayer
